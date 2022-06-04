@@ -14,9 +14,6 @@ test_hands = [
 def suit(card):         # para sacar el simbolo
     return card[-1]
 
-# print(suit("5D"))
-# print(suit("7S"))
-
 def value(card):        # para sacar el valor
     if(card[0]=="A"):
         return 14
@@ -35,14 +32,9 @@ def value(card):        # para sacar el valor
 
     return(int(card[0:-1]))     # retorna un número que va desde el cero hasta antes del último caracter
 
-print(value("AC"))
-# print(value("10S"))
 
 def is_flush(cards):        # verifica si es que es verdadero o falso que el primer 'suit' es igual hasta el último suit de la cadena de texto --- si todos los suits de esa cadena son iguales
     return all([suit(card)==suit(cards[0]) for card in cards[1:]])
-
-# print([is_flush(hand) for hand in test_hands])
-
 
 def hand_dist(cards):       # en un rango de del 1 al 14 se crea una grupo de distribución, donde por cada 'carta' en 'cartas' de un 'simbolo' se suma 1 siendo que si no hay nada se queda en 0
   dist = {i:0 for i in range(1, 15)}
@@ -50,9 +42,6 @@ def hand_dist(cards):       # en un rango de del 1 al 14 se crea una grupo de di
     dist[value(card)] += 1
   dist[1] = dist[14]
   return dist
-
-
-print([hand_dist(hand.split()) for hand in test_hands])
 
 def straight_high_card(cards):      # si valor en un rango del 1 al 10 tiene como 1 de 'carta' en 'cartas' de corrido, es una escalera
   dist = hand_dist(cards)
@@ -62,7 +51,6 @@ def straight_high_card(cards):      # si valor en un rango del 1 al 10 tiene com
       
   return None
 
-# print([straight_high_card(hand) for hand in test_hands])
 
 def card_count(cards, num, but=None):
   dist = hand_dist(cards)
@@ -72,46 +60,6 @@ def card_count(cards, num, but=None):
     if dist[value] == num:
       return value
   return None
-
-# print([card_count(hand, 2) for hand in test_hands])
-# print([card_count(hand, 2, 2) for hand in test_hands])
-# print([card_count(hand, 4) for hand in test_hands])
-
-# NAME RANKS
-# def nameHand_straight_flush():
-#   cards = cards.split()
-#   if straight_high_card(cards) is not None and is_flush(cards):
-#     return cards
-# def nameHand_quads():
-#   if card_count(cards, 4) is not None:
-#     cards = cards.split()
-#     return cards
-# def nameHand_boat():
-#   cards = cards.split
-#   if card_count(cards, 3) is not None and card_count(cards, 2) is not None:
-#     return cards
-# def nameHand_flush():
-#   cards = cards.split()
-#   if is_flush(cards):
-#     return cards
-# def nameHand_straight():
-#   cards = cards.split()
-#   if straight_high_card(cards) is not None:
-#     return cards
-# def nameHand_set():
-#   cards = cards.split()
-#   if card_count(cards, 3) is not None:
-#     return cards
-
-
-# def name_ranks(cards):  # eliminar al terminar
-#   cards = cards.split()
-#   #
-#   pair1 = card_count(cards, 2)
-#   if pair1 is not None:
-#     if card_count(cards, 2, but=pair1) is not None:
-#       return 2
-#     return 1
 
 def hand_rank(cards):
   cards = cards.split()
@@ -134,23 +82,19 @@ def hand_rank(cards):
     return 1
   return 0
 
-# print([hand_rank(hand) for hand in test_hands])
-
 def print_comparasion(hand1, hand2, winner):
-  result = "It\'s a draw!"
-  hands_print = hand1 + " = " + hand2
+  result = "\nIt\'s a draw!"
+  hands_print = hand1 + " = " + hand2 + "\n"
   if winner == -1:
-    result = "Hand 1 wins"
-    hands_print = hand1 + " defeats " + hand2
+    result = "\nHand 1 wins"
+    hands_print = hand1 + " defeats " + hand2 + "\n"
   
   if winner == 1:
-    result = "Hand 2 wins"
-    hands_print = hand2 + " defeats " + hand1
+    result = "\nHand 2 wins"
+    hands_print = hand2 + " defeats " + hand1 + "\n"
 
-  print ("")
   print (result)
   print (hands_print)
-  print ("")
 
 
 def compare_hands(hand1, hand2):
@@ -168,4 +112,4 @@ def showdown(hand1, hand2):
   result = compare_hands(hand1, hand2)
   print_comparasion(hand1, hand2, result)
 
-showdown(test_hands[5], test_hands[4])
+showdown(test_hands[1], test_hands[1])
