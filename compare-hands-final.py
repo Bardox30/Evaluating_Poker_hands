@@ -102,9 +102,9 @@ def compare_hands(hand1, hand2):
   score_hand2 = hand_rank(hand2)
   result = 0
   if score_hand1 < score_hand2:
-    result = -1
-  if score_hand1 > score_hand2:
     result = 1
+  if score_hand1 > score_hand2:
+    result = -1
   # Need to add test for high cards - tie breakers
   return result
 
@@ -112,4 +112,4 @@ def showdown(hand1, hand2):
   result = compare_hands(hand1, hand2)
   print_comparasion(hand1, hand2, result)
 
-showdown(test_hands[1], test_hands[1])
+showdown(test_hands[8], test_hands[1])
