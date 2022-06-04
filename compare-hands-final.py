@@ -63,21 +63,21 @@ def card_count(cards, num, but=None):
 
 def hand_rank(cards):
   cards = cards.split()
-  if straight_high_card(cards) is not None and is_flush(cards):
+  if straight_high_card(cards) is not None and is_flush(cards):   ### Straight High and Flush
     return 8
-  if card_count(cards, 4) is not None:
+  if card_count(cards, 4) is not None:      ### Quads
     return 7
-  if card_count(cards, 3) is not None and card_count(cards, 2) is not None:
+  if card_count(cards, 3) is not None and card_count(cards, 2) is not None:    ### Full House
     return 6
-  if is_flush(cards):
+  if is_flush(cards):         ### Flush
     return 5
   if straight_high_card(cards) is not None:
     return 4
-  if card_count(cards, 3) is not None:
+  if card_count(cards, 3) is not None:      ### Three of One
     return 3
   pair1 = card_count(cards, 2)
-  if pair1 is not None:
-    if card_count(cards, 2, but=pair1) is not None:
+  if pair1 is not None:           ### Two pairs
+    if card_count(cards, 2, but=pair1) is not None:     ### One pair
       return 2
     return 1
   return 0
