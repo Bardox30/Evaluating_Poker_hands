@@ -61,7 +61,7 @@ def card_count(cards, num, but=None):
       return value
   return None
 
-def hand_rank(cards):
+def hand_rank(cards):           #### Ranking of All Kind of Hands
   cards = cards.split()
   if straight_high_card(cards) is not None and is_flush(cards):   ### Straight High and Flush
     return 8
